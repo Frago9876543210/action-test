@@ -18,6 +18,8 @@ jobs:
 
       - name: Run a multi-line script
         run: |
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+
           gh auth login --with-token <<<$(echo ${{ secrets.PERSONAL_ACCESS_TOKEN }})
           gh auth status
 
@@ -28,7 +30,7 @@ jobs:
           # echo "*error" > install.log
           # exit 1
           zip -r bin.zip bin/
-          gh release create "${{ env.PHP_VERSION }}_${{ github.sha }}" bin.zip
+          gh release create "${{ env.PHP_VERSION }} $COMMIT_SHA" bin.zip
 
       - uses: actions/upload-artifact@v2
         with:
