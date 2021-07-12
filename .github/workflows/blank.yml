@@ -30,8 +30,10 @@ jobs:
           echo "PHP_VERSION=$PHP_VERSION" >> $GITHUB_ENV
           # echo "*error" > install.log
           # exit 1
-          zip -r bin.zip bin/
-          gh release create "$PHP_VERSION@$COMMIT_SHA" --title "PHP $PHP_VERSION" || echo Release already created
+          zip -r bin-${{ matrix.image }}.zip bin/
+          GITHUB_RELEASE_TAG="$PHP_VERSION@$COMMIT_SHA"
+          gh release create "$GITHUB_RELEASE_TAG" --title "PHP $PHP_VERSION" || echo Release already created
+          gh release upload "$GITHUB_RELEASE_TAG" bin-${{ matrix.image }}.zip
 
       - uses: actions/upload-artifact@v2
         with:
