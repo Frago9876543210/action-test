@@ -24,6 +24,6 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: PHP ${{ env.PHP_VERSION }}
+          name: PHP ${{ env.PHP_VERSION }} for ${{ matrix.image }}
           path: |
             bin/
