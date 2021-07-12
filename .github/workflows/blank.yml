@@ -20,7 +20,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           mkdir bin/
-          cat /dev/null > bin/filename
+          echo "data for ${{ matrix.image }}" > bin/filename
 
       - uses: actions/upload-artifact@v2
         with:
