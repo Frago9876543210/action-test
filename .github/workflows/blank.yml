@@ -30,7 +30,7 @@ jobs:
           # echo "*error" > install.log
           # exit 1
           zip -r bin.zip bin/
-          gh release create "${{ env.PHP_VERSION }}@$COMMIT_SHA" bin.zip --title "PHP ${{ env.PHP_VERSION }} for ${{ matrix.image }}"
+          gh release create "$PHP_VERSION@$COMMIT_SHA" bin.zip --title "PHP $PHP_VERSION"
 
       - uses: actions/upload-artifact@v2
         with:
