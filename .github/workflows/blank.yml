@@ -19,7 +19,7 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          ./gh auth login --with-token <<<$(echo ${{ secrets.PERSONAL_ACCESS_TOKEN }})
+          gh auth login --with-token <<<$(echo ${{ secrets.PERSONAL_ACCESS_TOKEN }})
           gh auth status
 
           mkdir bin/
