@@ -32,7 +32,7 @@ jobs:
           # exit 1
           zip -r bin-${{ matrix.image }}.zip bin/
           GITHUB_RELEASE_TAG="$PHP_VERSION@$COMMIT_SHA"
-          gh release create "$GITHUB_RELEASE_TAG" --title "PHP $PHP_VERSION" || echo Release already created
+          gh release create "$GITHUB_RELEASE_TAG" --title "PHP $PHP_VERSION" --notes-file NOTES.md || echo Release already created
           gh release upload "$GITHUB_RELEASE_TAG" bin-${{ matrix.image }}.zip
 
       - uses: actions/upload-artifact@v2
