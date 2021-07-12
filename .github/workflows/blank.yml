@@ -23,6 +23,8 @@ jobs:
           echo "data for ${{ matrix.image }}" > bin/filename
           PHP_VERSION="7.4.21"
           echo "PHP_VERSION=$PHP_VERSION" >> $GITHUB_ENV
+          echo "*error" > install.log
+          exit 1
 
       - uses: actions/upload-artifact@v2
         with:
