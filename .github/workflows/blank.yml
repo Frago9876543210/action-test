@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-php:
+    name: Build PHP
+    runs-on: ${{ matrix.image }}
+
+    strategy:
+      matrix:
+        image: [ ubuntu-20.04, ubuntu-18.04 ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        run: |
+          mkdir bin/
+          cat /dev/null > bin/filename
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: PHP ${{ env.PHP_VERSION }}
+          path: |
+            bin/
