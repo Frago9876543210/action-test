@@ -19,6 +19,7 @@ jobs:
 
       - name: Run a multi-line script
         run: |
+          echo ${{ github.ref }}
           COMMIT_SHA=$(git rev-parse --short HEAD)
 
           gh auth login --with-token <<<$(echo ${{ secrets.PERSONAL_ACCESS_TOKEN }})
