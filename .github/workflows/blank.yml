@@ -7,34 +7,19 @@ on:
 
 jobs:
   build-php:
-    name: Build PHP
+    name: Build
     runs-on: ${{ matrix.image }}
 
     strategy:
       matrix:
-        image: [ ubuntu-20.04, ubuntu-18.04 ]
+        image: [ windows-2016 ]
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Run a multi-line script
         run: |
-          echo ${{ github.ref }} ${{ github.base_ref }} ${GITHUB_REF##*/}
-          COMMIT_SHA=$(git rev-parse --short HEAD)
-
-          gh auth login --with-token <<<$(echo ${{ secrets.PERSONAL_ACCESS_TOKEN }})
-          gh auth status
-
-          mkdir bin/
-          echo "data for ${{ matrix.image }}" > bin/filename
-          PHP_VERSION="7.4.21"
-          echo "PHP_VERSION=$PHP_VERSION" >> $GITHUB_ENV
-          # echo "*error" > install.log
-          # exit 1
-          zip -r bin-${{ matrix.image }}.zip bin/
-          GITHUB_RELEASE_TAG="$PHP_VERSION@$COMMIT_SHA"
-          gh release create "$GITHUB_RELEASE_TAG" --title "PHP $PHP_VERSION" --notes-file NOTES.md || echo Release already created
-          gh release upload "$GITHUB_RELEASE_TAG" bin-${{ matrix.image }}.zip
+          ls "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\link.exe"
 
       - uses: actions/upload-artifact@v2
         with:
