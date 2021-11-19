@@ -19,7 +19,6 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          ls "C:\Program Files (x86)\Microsoft Visual Studio\2019"
           Get-DnsClientServerAddress
 
       - uses: actions/upload-artifact@v2
