@@ -20,6 +20,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           Get-DnsClientServerAddress
+          Get-DnsClientCache
 
       - uses: actions/upload-artifact@v2
         with:
