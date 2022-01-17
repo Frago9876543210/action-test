@@ -23,5 +23,5 @@ jobs:
           set vcvars64Lookup=call %vswhere% -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -find VC\Auxiliary\Build\vcvars64.bat
           for /f "tokens=*" %%i in ('%vcvars64Lookup%') do set vcvars64="%%i"
           call %vcvars64% > NUL
-          where link
+          where link | findstr "Microsoft Visual Studio"
         shell: cmd
