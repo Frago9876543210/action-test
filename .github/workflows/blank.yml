@@ -20,7 +20,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           set vswhere="%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe"
-          set vcvars64=call %vswhere% -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -find VC\Auxiliary\Build\vcvars64.bat
+          set vcvars64Lookup=call %vswhere% -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -find VC\Auxiliary\Build\vcvars64.bat
+          for /f "tokens=*" %%i in ('%vcvars64Lookup%') do set vcvars64="%%i"
           call %vcvars64%
           where link
         shell: cmd
