@@ -20,5 +20,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           set vswhere="%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe"
-          call %vswhere% -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -find VC\Auxiliary\Build\vcvars64.bat
+          set vcvars64=call %vswhere% -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -find VC\Auxiliary\Build\vcvars64.bat
+          call %vcvars64%
         shell: cmd
